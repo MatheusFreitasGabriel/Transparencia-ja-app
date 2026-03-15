@@ -1,10 +1,8 @@
 package br.com.fiap.transparenciaja.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -17,8 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,7 +24,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun HomeScreen() {
     val darkBlue = Color(0xFF203E71)
-    val lightGray = Color(0xFFF8F9FA)
+    val lightGray = Color(0xFFF8F9FA) // Fundo cinza claro para destacar os cards brancos
     val orangeLimit = Color(0xFFF7A01B)
 
     Scaffold(
@@ -50,7 +46,6 @@ fun HomeScreen() {
                         IconButton(onClick = {}) {
                             Icon(Icons.Outlined.Notifications, contentDescription = null, tint = Color.Gray)
                         }
-                        // Bolinha vermelha de notificação
                         Box(
                             Modifier
                                 .size(10.dp)
@@ -72,24 +67,9 @@ fun HomeScreen() {
                     label = { Text("Home") },
                     colors = NavigationBarItemDefaults.colors(selectedIconColor = darkBlue, selectedTextColor = darkBlue)
                 )
-                NavigationBarItem(
-                    selected = false,
-                    onClick = {},
-                    icon = { Icon(Icons.Default.Search, contentDescription = null) },
-                    label = { Text("Buscar") }
-                )
-                NavigationBarItem(
-                    selected = false,
-                    onClick = {},
-                    icon = { Icon(Icons.Default.Notifications, contentDescription = null) },
-                    label = { Text("Alertas") }
-                )
-                NavigationBarItem(
-                    selected = false,
-                    onClick = {},
-                    icon = { Icon(Icons.Default.Person, contentDescription = null) },
-                    label = { Text("Perfil") }
-                )
+                NavigationBarItem(selected = false, onClick = {}, icon = { Icon(Icons.Default.Search, contentDescription = null) }, label = { Text("Buscar") })
+                NavigationBarItem(selected = false, onClick = {}, icon = { Icon(Icons.Default.Notifications, contentDescription = null) }, label = { Text("Alertas") })
+                NavigationBarItem(selected = false, onClick = {}, icon = { Icon(Icons.Default.Person, contentDescription = null) }, label = { Text("Perfil") })
             }
         }
     ) { innerPadding ->
@@ -111,7 +91,7 @@ fun HomeScreen() {
                 }
             }
 
-            // Card Político 1
+            // Cards dos Políticos
             item {
                 PoliticoCard(
                     nome = "Ana Paula Silva",
@@ -122,10 +102,8 @@ fun HomeScreen() {
                     porcentagem = 0.67f,
                     corBarra = darkBlue
                 )
-                Spacer(Modifier.height(16.dp))
             }
 
-            // Card Político 2
             item {
                 PoliticoCard(
                     nome = "Carlos Eduardo Lima",
@@ -140,7 +118,7 @@ fun HomeScreen() {
 
             item {
                 Row(
-                    Modifier.fillMaxWidth().padding(top = 32.dp, bottom = 16.dp),
+                    Modifier.fillMaxWidth().padding(top = 24.dp, bottom = 8.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -149,10 +127,12 @@ fun HomeScreen() {
                 }
             }
 
-            // Lista de Alertas
+            // Cards dos Alertas
             item { AlertaItem("Ana Paula Silva gastou R$ 4.200 em passagens", "hoje", Color.Red) }
             item { AlertaItem("Carlos Lima atingiu 80% do limite CEAP", "ontem", orangeLimit) }
             item { AlertaItem("Marcos Aurélio abaixo da média do mês", "2d atrás", Color.Green) }
+
+            item { Spacer(modifier = Modifier.height(20.dp)) }
         }
     }
 }
@@ -160,14 +140,16 @@ fun HomeScreen() {
 @Composable
 fun PoliticoCard(nome: String, cargo: String, partido: String, uf: String, gasto: String, porcentagem: Float, corBarra: Color) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(24.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
-        Column(Modifier.padding(20.dp)) {
+        Column(Modifier.padding(16.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                // Placeholder para foto
+                // Espaço para Foto
                 Box(Modifier.size(60.dp).clip(CircleShape).background(Color.LightGray))
                 Spacer(Modifier.width(16.dp))
                 Column {
@@ -182,8 +164,10 @@ fun PoliticoCard(nome: String, cargo: String, partido: String, uf: String, gasto
                     }
                 }
             }
+
             Spacer(Modifier.height(16.dp))
             Text("Gastou $gasto esse mês", color = Color(0xFFF7A01B), fontWeight = FontWeight.Bold)
+
             Spacer(Modifier.height(8.dp))
             LinearProgressIndicator(
                 progress = { porcentagem },
@@ -199,9 +183,12 @@ fun PoliticoCard(nome: String, cargo: String, partido: String, uf: String, gasto
 @Composable
 fun AlertaItem(titulo: String, tempo: String, corBolinha: Color) {
     Card(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(12.dp).background(corBolinha, CircleShape))
