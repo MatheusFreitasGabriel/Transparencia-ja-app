@@ -17,7 +17,7 @@ jobs:
           java-version: '17'
           cache: gradle
       - name: Executar testes da API
-        run: ./gradlew -p api clean test
+        run: bash gradlew -p api clean test
 
   android-unit-tests:
     name: App Android e cenários BDD existentes
@@ -31,4 +31,4 @@ jobs:
           java-version: '17'
           cache: gradle
       - name: Executar testes unitários Android
-        run: ./gradlew :app:testDebugUnitTest
+        run: bash gradlew :app:testDebugUnitTest

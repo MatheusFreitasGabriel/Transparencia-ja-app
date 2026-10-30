@@ -19,4 +19,4 @@ jobs:
       - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
       - name: Executar testes unitários e BDD
-        run: ./gradlew :app:testDebugUnitTest
+        run: bash gradlew :app:testDebugUnitTest
