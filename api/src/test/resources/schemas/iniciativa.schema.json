@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Iniciativa ESG",
+  "type": "object",
+  "required": ["id", "nome", "descricao", "pilarEsg", "quantidadeRecicladaKg"],
+  "properties": {
+    "id": { "type": "integer", "minimum": 1 },
+    "nome": { "type": "string", "minLength": 1 },
+    "descricao": { "type": "string", "minLength": 1 },
+    "pilarEsg": { "type": "string", "enum": ["Ambiental", "Social", "Governança"] },
+    "quantidadeRecicladaKg": { "type": "number", "minimum": 0 }
+  },
+  "additionalProperties": false
+}

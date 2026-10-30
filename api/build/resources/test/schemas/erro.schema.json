@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Resposta de erro",
+  "type": "object",
+  "required": ["erro"],
+  "properties": { "erro": { "type": "string", "minLength": 1 } },
+  "additionalProperties": false
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.fiap.transparenciaja.api.IniciativaApiTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-30T22:37:33.748Z" hostname="PIJULINHA" time="0.993">
+  <properties/>
+  <testcase name="criarIniciativaDeveRetornar201EContratoJsonValido()" classname="br.com.fiap.transparenciaja.api.IniciativaApiTest" time="0.516"/>
+  <testcase name="criarIniciativaSemNomeDeveRetornar400EContratoDeErro()" classname="br.com.fiap.transparenciaja.api.IniciativaApiTest" time="0.045"/>
+  <testcase name="excluirIniciativaDeveRetornar204()" classname="br.com.fiap.transparenciaja.api.IniciativaApiTest" time="0.125"/>
+  <testcase name="listarIniciativasDeveRetornarStatus200EJsonCorreto()" classname="br.com.fiap.transparenciaja.api.IniciativaApiTest" time="0.041"/>
+  <testcase name="rotaInexistenteDeveRetornar404EContratoDeErro()" classname="br.com.fiap.transparenciaja.api.IniciativaApiTest" time="0.036"/>
+  <testcase name="atualizarIniciativaDeveRetornar200EJsonAtualizado()" classname="br.com.fiap.transparenciaja.api.IniciativaApiTest" time="0.094"/>
+  <testcase name="buscarIniciativaExistenteDeveRetornar200EContratoValido()" classname="br.com.fiap.transparenciaja.api.IniciativaApiTest" time="0.083"/>
+  <system-out><![CDATA[2026-10-30T19:37:33.761-03:00  INFO 42788 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.fiap.transparenciaja.api.IniciativaApiTest]: IniciativaApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-30T19:37:33.774-03:00  INFO 42788 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.fiap.transparenciaja.api.TransparenciaApiApplication for test class br.com.fiap.transparenciaja.api.IniciativaApiTest
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
